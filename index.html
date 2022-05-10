@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title>Materiality 0.1</title>
+    <meta name="Materiality" content="A game inspired by Antimatter Dimensions, where you gain matter till the end of times">
+    <link rel="stylesheet" type="css" href="styles.css">
+</head>
+<body>
+
+<div><td>You have <span id="particles">0</span> particles.</td></div><br>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
+  <button hidden class="tablinks" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
+  <button hidden class="tablinks" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
+  <button class="tablinks" onclick="openTab(event, 'options')">Options</button>
+  <button class="tablinks" onclick="openTab(event, 'about')">About</button>
+</div><br>
+
+<div id="particleAccelerator" class="tabName">
+  <div><span id="vCTClick">0</span> Clicks generating a Multiplier boost of x<span id="vCTClickBoost">0</span></div>
+  <div><button id="vCButton" onclick="voidClicker()"> Generate </button> <span id="vCResult">0 </span> per click. (Total multiplier is: x<span id="totalMult">1</span>)</div>
+  <div><button id="voidClickerUpgrade" onclick="voidClickerUpgrade()">Buy Upgrade</button> Upgrade cost: <span id="vCUpCost">2</span> (<span id="vCUpBought">0</span> Bought * 4 = Multiplier of x<span id="vCUpMult">0</span>)</div>
+  <div id="autoClicker1" hidden><button id="voidClickerAutoClicker1" onclick="voidClickerAutoClicker1()"> Buy Autoclicker 1</button>Cost: <span id="vCAC1Cost">1024</span> (<span id="vCAC1Bought">0</span> Bought * 8 = Multiplier of x<span id="vCAC1Mult">0</span>)</div>
+  <div id="autoClicker2" hidden><button id="voidClickerAutoClicker2" onclick="voidClickerAutoClicker2()"> Buy Autoclicker 2</button>Cost: <span id="vCAC2Cost">100k</span> (<span id="vCAC2Bought">0</span> Bought * 16 = Multiplier of x<span id="vCAC2Mult">0</span>)</div>
+</div>
+<div id="implodedReality" class="tabName">
+</div>
+  
+<div id="darkMatter" class="tabName">
+</div>
+
+<div id="options" class="tabName">
+  <button onclick="deleteSave()">Clear Save</button>
+  <button onclick="saveGame()">Save</button>
+</div>
+
+<div id="about" class="tabName">
+  <td>Materiality 0.1 is a game inspired by Antimatter Dimensions, where you gain matter till the end of times.</td><br>
+  <td>This is a prototype, so there are some bugs and glitches. If you find one, please report it to me.</td><br>
+  <td>You can play the game by clicking the "Generate" button.</td><br>
+  <td>Autoclicker upgrades makes the multiplier more bigger than the regular upgrade, it also reduces the click time of the autoclickers!</td>
+  <td>If you want to see the source code and know the progress of the game, you can visit the trello page below.</td><br>
+  <td><a href="https://trello.com/b/7OG8V7Tz/materiality">Trello: https://trello.com/b/7OG8V7Tz/materiality</a></td>
+</div>
+
+</body>
+<script src="javascripts/jquery-3.6.0.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/main.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/calculations.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/decimal.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/format.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/savestuff.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/reveals.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/upgradehighlights.js" charset="utf-8" type="text/javascript"></script>
+</html>
