@@ -15,14 +15,14 @@ var gameData = {
     vCTClickBoost: Number(0),
   },
   vAutoclicker1: {
-    vCAC1Cost: Number(1e3),
+    vCAC1Cost: Number(1024),
     vCAC1Bought: Number(0),
     vCAC1ClickTime: Number(200),
     vCAC1Mult: Number(0),
     vCACT1imes: Number(0),
   },
   vAutoclicker2: {
-    vCAC2Cost: Number(1e4),
+    vCAC2Cost: Number(1024*1e2),
     vCAC2Bought: Number(0),
     vCAC2ClickTime: Number(200),
     vCAC2Mult: Number(0),
@@ -60,6 +60,6 @@ function openTab(evt, idName) {
 openTab(event, 'particleAccelerator')
 
 function implodeReality() {
-  if (gameData.particles >= 1e6) {
+  if (gameData.particles >= 1024*1e3) {
     document.getElementById("implodeRealityButton").hidden = false;
   }}setInterval(implodeReality, 1);
