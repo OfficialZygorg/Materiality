@@ -2,9 +2,3 @@
 
 function revealVCAutoClicker1(){if(gameData.particles >= gameData.vCAC1Cost){document.getElementById("autoClicker1").hidden = false;}};setInterval(revealVCAutoClicker1,1);
 function revealVCAutoClicker2(){if(gameData.particles >= gameData.vCAC2Cost){document.getElementById("autoClicker2").hidden = false;}};setInterval(revealVCAutoClicker2,1);
-
-// setInterval(function(){
-//   if(gameData.vCAC10Bought >= 1){
-//     document.getElementById("vCButton").hidden = true;
-//   }
-// },1);
