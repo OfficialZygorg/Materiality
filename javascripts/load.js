@@ -1,0 +1,1 @@
+openTab(event, 'particleAccelerator')
