@@ -57,8 +57,6 @@ function openTab(evt, idName) {
   evt.currentTarget.className += " active";
 }
 
-openTab(event, 'particleAccelerator')
-
 function implodeReality() {
   if (gameData.particles >= 1024*1e3) {
     document.getElementById("implodeRealityButton").hidden = false;
