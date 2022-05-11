@@ -131,13 +131,13 @@ function formatValue(notation, value, places, placesUnder1000) {
 }
 
 // shorten = function (particles) {
-//   return formatValue(gameData.notation, particles, 2, 2);
+//   return formatValue(mainData.notation, particles, 2, 2);
 // };
 
 // shortenCosts = function (particles) {
-//   return formatValue(gameData.gameData, particles, 0, 0);
+//   return formatValue(mainData.gameData, particles, 0, 0);
 // };
 
 // shortenMoney = function (particles) {
-//   return formatValue(gameData.gameData, particles, 2, 1);
+//   return formatValue(mainData.gameData, particles, 2, 1);
 // };

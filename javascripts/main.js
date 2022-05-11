@@ -1,10 +1,7 @@
-//Game Data
-var randomStuff ={
-  notation: String("Mixed scientific"),
-  commas: true,
-}
-    
-var gameData = {
+//Game Data  
+
+var mainData = {
+  gameData: {
     particles: Number(0),
     totalMult: Number(0),
   vClicker: {
@@ -30,10 +27,15 @@ var gameData = {
     vCAC2Mult: Number(0),
     vCACT2imes: Number(0),
   },
-};
-var implodedReality = {
-  implodedCost: Number(1024*1e3),
-  implodedParticles: Number(0),
+},
+  implodedReality: {
+    implodedCost: Number(1024*1e3),
+    implodedParticles: Number(0),
+},
+  randomStuff: {
+    notation: String("Mixed scientific"),
+    commas: true,
+},
 }
 
 const flat = (obj, out) => {
@@ -47,8 +49,7 @@ const flat = (obj, out) => {
   return out;
 }
 
-gameData = flat(gameData, {});
-implodedReality = flat(implodedReality, {});
+mainData = flat(mainData, {});
 
 function openTab(evt, idName) {
   var i, tabName, tablinks;

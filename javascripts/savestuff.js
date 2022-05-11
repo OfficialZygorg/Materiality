@@ -4,25 +4,24 @@ function deleteSave(){
   location.reload();
 }
 
-//Function to manually save gameData
-savedData = {randomStuff,gameData,implodedReality}
+//Function to manually save mainData
 function saveGame() {
-  localStorage.setItem("materialitySave", JSON.stringify((savedData)));
+  localStorage.setItem("materialitySave", JSON.stringify((mainData)));
 }
 
 //AutoSave every 30s
 var saveGameLoop = window.setInterval(function() {
-  localStorage.setItem("materialitySave", JSON.stringify((savedData)));
+  localStorage.setItem("materialitySave", JSON.stringify((mainData)));
 }, 30000);
 var savegame = JSON.parse(localStorage.getItem("materialitySave"));
   if (savegame !== null) {
-    savedData = savegame;
-    if (typeof savegame.materialitySave !== "undefined") savedData.materialitySave = savegame.materialitySave;
+    mainData = savegame;
+    if (typeof savegame.materialitySave !== "undefined") mainData.materialitySave = savegame.materialitySave;
 }
 
 //Load savegame.materialitySave on page load
 window.onload = function() {
-  if (typeof savedData.materialitySave !== "undefined") {
-    savedData.materialitySave = JSON.parse(localStorage.getItem("materialitySave"));
+  if (typeof mainData.materialitySave !== "undefined") {
+    mainData.materialitySave = JSON.parse(localStorage.getItem("materialitySave"));
   } 
 }
