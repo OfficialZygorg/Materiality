@@ -11,15 +11,12 @@
 //     }
 // };
 
-// function buttonHighligts() {
-// buttons={
-//     vCUpCost:voidClickerUpgrade,
-//     vCAC1Cost:voidClickerAutoClicker1
-//     }
-// buttons = flat(buttons,{});
-// for (i = 0; i < Object.keys(buttons).length; i++) {
-//     if (gameData.particles >= Object.keys(buttons[i])) {
-//         document.getElementsByName(Object.values(buttons)[i]).style.borderColor = "black";
-//     } else {
-//         document.getElementsByName(Object.values(buttons)[i]).style.borderColor = "";
-// }}}setInterval(buttonHighligts, 1);
+function buttonHighligts() {
+    costs=vCUpCost,vCAC1Cost,vCAC2Cost
+    buttons=voidClickerUpgrade,voidClickerAutoClicker1,voidClickerAutoClicker2
+for (i = 0; i < costs.length; i++) {
+    if (gameData.particles >= gameData.costs[i]) {
+        document.getElementsByName(buttons[i]).style.borderColor = "black";
+    } else {
+        document.getElementsByName(buttons[i]).style.borderColor = "";
+}}}setInterval(buttonHighligts, 1);
