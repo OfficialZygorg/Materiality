@@ -6,37 +6,39 @@
 </head>
 <body>
 
-<div><td>You have <span id="particles">0</span> particles.</td></div><br>
+<div><td>You have <span id="particles">0</span> particles.</td></div>
+<div class="implodedReality" hidden>You have <span class="implodedParticles">0</span> imploded particles.</div><br>
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
+  <button class="tablinks active" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
   <button hidden class="tablinks" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
   <button hidden class="tablinks" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
   <button class="tablinks" onclick="openTab(event, 'options')">Options</button>
   <button class="tablinks" onclick="openTab(event, 'about')">About</button>
 </div><br>
 
-<div id="particleAccelerator" class="tabName">
+<div id="particleAccelerator" style="display: block;" class="tabName">
   <div><span id="vCTClick">0</span> Clicks generating a Multiplier boost of x<span id="vCTClickBoost">0</span></div>
-  <div><button onclick="voidClicker()"> Generate </button> <span id="vCResult">0 </span> per click. (Total multiplier is: x<span id="totalMult">1</span>)</div>
-  <div><button class="voidClickerUpgrade" onclick="voidClickerUpgrade()">Buy Upgrade</button> Upgrade cost: <span id="vCUpCost">2</span> (<span id="vCUpBought">0</span> Bought * 4 = Multiplier of x<span id="vCUpMult">0</span>)</div>
-  <div id="autoClicker1" hidden><button class="voidClickerAutoClicker1" onclick="voidClickerAutoClicker1()"> Buy Autoclicker 1</button>Cost: <span id="vCAC1Cost">1024</span> (<span id="vCAC1Bought">0</span> Bought * 8 = Multiplier of x<span id="vCAC1Mult">0</span>)</div>
-  <div id="autoClicker2" hidden><button class="voidClickerAutoClicker2" onclick="voidClickerAutoClicker2()"> Buy Autoclicker 2</button>Cost: <span id="vCAC2Cost">102k</span> (<span id="vCAC2Bought">0</span> Bought * 16 = Multiplier of x<span id="vCAC2Mult">0</span>)</div>
-  <div id="implodedRealityButton" disabled hidden><button onclick="implodeReality()">Implode Reality for 1M Particles (Not Enabled as for now)</button></div>
+  <div><button onclick="voidClicker()"> Generate </button> <span id="vCResult">1 </span> per click. (Total multiplier is: x<span id="totalMult">1</span>)</div>
+  <div><button class="voidClickerUpgrade" onclick="voidClickerUpgrade()">Buy Upgrade</button> Upgrade cost: <span id="vCUpCost">2</span> (<span id="vCUpBought">0</span> Bought * 2 = Multiplier of x<span id="vCUpMult">0</span>)</div>
+  <div id="autoClicker1" hidden><button class="voidClickerAutoClicker1" onclick="voidClickerAutoClicker1()"> Buy Autoclicker 1</button>Cost: <span id="vCAC1Cost">1024</span> (<span id="vCAC1Bought">0</span> Bought * 4 = Multiplier of x<span id="vCAC1Mult">0</span>)</div>
+  <div id="autoClicker2" hidden><button class="voidClickerAutoClicker2" onclick="voidClickerAutoClicker2()"> Buy Autoclicker 2</button>Cost: <span id="vCAC2Cost">102 k</span> (<span id="vCAC2Bought">0</span> Bought * 8 = Multiplier of x<span id="vCAC2Mult">0</span>)</div>
+  <div id="implodedRealityButton" hidden><button onclick="implodeReality()">Implode Reality for <span id="implodeCost">1 M</span> Particles</button></div>
 </div>
 
-<div id="implodedReality" class="tabName">
+<div id="implodedReality" class="implodedReality" hidden style="display: none;" class="tabName">
+  <div>You have <span class="implodedParticles">0</span></div>
 </div>
   
-<div id="darkMatter" class="tabName">
+<div id="darkMatter" style="display: none;" class="tabName">
 </div>
 
-<div id="options" class="tabName">
+<div id="options" style="display: none;" class="tabName">
   <button onclick="deleteSave()">Clear Save</button>
   <button onclick="saveGame()">Save</button>
 </div>
 
-<div id="about" class="tabName">
+<div id="about" style="display: none;" class="tabName">
   <td>Materiality 0.1 is a game inspired by Antimatter Dimensions, where you gain matter till the end of times.</td><br>
   <td>This is a prototype, so there are some bugs and glitches. If you find one, please report it to me.</td><br>
   <td>You can play the game by clicking the "Generate" button.</td><br>
@@ -45,7 +47,6 @@
   <td><a href="https://trello.com/b/7OG8V7Tz/materiality">Trello: https://trello.com/b/7OG8V7Tz/materiality</a></td>
 </div>
 
-</body>
 <script src="javascripts/jquery-3.6.0.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/main.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/calculations.js" charset="utf-8" type="text/javascript"></script>
@@ -54,5 +55,5 @@
 <script src="javascripts/savestuff.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/load.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/reveals.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/upgradehighlights.js" charset="utf-8" type="text/javascript"></script>
+</body>
 </html>

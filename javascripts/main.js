@@ -1,16 +1,18 @@
 //Game Data
+var randomStuff ={
+  notation: String("Mixed scientific"),
+  commas: true,
+}
+    
 var gameData = {
     particles: Number(0),
-    totalMult: Number(1),
-    totalMultSum: Number(0),
-    notation: String("Mixed scientific"),
-    commas: true,
+    totalMult: Number(0),
   vClicker: {
+    voidClick: Number(1),
     vCUpMult: Number(0),
     vCUpCost: Number(2),
     vCUpBought: Number(0),
-    vCResult: Number(0),
-    vCResultSum: Number(0),
+    vCResult: Number(1),
     vCTClick: Number(0),
     vCTClickBoost: Number(0),
   },
@@ -29,6 +31,10 @@ var gameData = {
     vCACT2imes: Number(0),
   },
 };
+var implodedReality = {
+  implodedCost: Number(1024*1e3),
+  implodedParticles: Number(0),
+}
 
 const flat = (obj, out) => {
   Object.keys(obj).forEach(key => {
@@ -42,6 +48,7 @@ const flat = (obj, out) => {
 }
 
 gameData = flat(gameData, {});
+implodedReality = flat(implodedReality, {});
 
 function openTab(evt, idName) {
   var i, tabName, tablinks;
@@ -56,8 +63,3 @@ function openTab(evt, idName) {
   document.getElementById(idName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-
-function implodeReality() {
-  if (gameData.particles >= 1024*1e3) {
-    document.getElementById("implodeRealityButton").hidden = false;
-  }}setInterval(implodeReality, 1);

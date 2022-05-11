@@ -57,25 +57,25 @@ function formatValue(notation, value, places, placesUnder1000) {
                 matissa /= 10;
                 power++;
             }
-            if (power > 100000  && !gameData.commas) return (matissa + "e" + formatValue(notation, power, 3, 3))
-            if (power > 100000  && gameData.commas) return (matissa + "e" + power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            if (power > 100000  && !randomStuff.commas) return (matissa + "e" + formatValue(notation, power, 3, 3))
+            if (power > 100000  && randomStuff.commas) return (matissa + "e" + power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             return (matissa + "e" + power);
         }
         if (notation === "Infinity") {
             const pow = Decimal.log10(value)
             if (pow / inflog < 1000) var infPlaces = 4
             else var infPlaces = 3
-            if (gameData.commas) return (pow / inflog).toFixed(Math.max(infPlaces, places)).toString().split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"."+(pow / inflog).toFixed(Math.max(infPlaces, places)).toString().split(".")[1]+"∞"
+            if (randomStuff.commas) return (pow / inflog).toFixed(Math.max(infPlaces, places)).toString().split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"."+(pow / inflog).toFixed(Math.max(infPlaces, places)).toString().split(".")[1]+"∞"
             else return (pow / inflog).toFixed(Math.max(infPlaces, places))+"∞"
         }
         if (notation.includes("engineering") || notation.includes("Engineering")) pow = power - (power % 1)
         else pow = power
-        if (power > 100000  && !gameData.commas) pow = formatValue(notation, pow, 3, 3)
-        if (power > 100000  && gameData.commas) pow = pow.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (power > 100000  && !randomStuff.commas) pow = formatValue(notation, pow, 3, 3)
+        if (power > 100000  && randomStuff.commas) pow = pow.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
         if (notation === "Logarithm") {
-            if (power > 100000  && !gameData.commas) return "ee"+Math.log10(Decimal.log10(value)).toFixed(3)
-            if (power > 100000  && gameData.commas) return "e"+Decimal.log10(value).toFixed(places).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (power > 100000  && !randomStuff.commas) return "ee"+Math.log10(Decimal.log10(value)).toFixed(3)
+            if (power > 100000  && randomStuff.commas) return "e"+Decimal.log10(value).toFixed(places).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             else return "e"+Decimal.log10(value).toFixed(Math.max(places, 1))
         }
 
@@ -120,7 +120,7 @@ function formatValue(notation, value, places, placesUnder1000) {
         }
 
         else {
-            if (power > 100000  && gameData.commas) power = power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            if (power > 100000  && randomStuff.commas) power = power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             return "1337 H4CK3R"
         }
     } else if (value < 1000) {
@@ -130,14 +130,14 @@ function formatValue(notation, value, places, placesUnder1000) {
     }
 }
 
-shorten = function (particles) {
-  return formatValue(gameData.notation, particles, 2, 2);
-};
+// shorten = function (particles) {
+//   return formatValue(gameData.notation, particles, 2, 2);
+// };
 
-shortenCosts = function (particles) {
-  return formatValue(gameData.gameData, particles, 0, 0);
-};
+// shortenCosts = function (particles) {
+//   return formatValue(gameData.gameData, particles, 0, 0);
+// };
 
-shortenMoney = function (particles) {
-  return formatValue(gameData.gameData, particles, 2, 1);
-};
+// shortenMoney = function (particles) {
+//   return formatValue(gameData.gameData, particles, 2, 1);
+// };
