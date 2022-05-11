@@ -26,7 +26,6 @@ window.onload = function() {
   } 
 }
 
-gameData = flat(gameData, {});
 window.onload(function() {
   for (i = 0; i < Object.keys(gameData).length; i++) {
     document.getElementById(Object.keys(gameData[i])).innerHTML = Object.values(gameData[i]);
