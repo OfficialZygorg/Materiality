@@ -129,15 +129,3 @@ function formatValue(notation, value, places, placesUnder1000) {
         return "Infinite";
     }
 }
-
-// shorten = function (particles) {
-//   return formatValue(mainData.notation, particles, 2, 2);
-// };
-
-// shortenCosts = function (particles) {
-//   return formatValue(mainData.gameData, particles, 0, 0);
-// };
-
-// shortenMoney = function (particles) {
-//   return formatValue(mainData.gameData, particles, 2, 1);
-// };
