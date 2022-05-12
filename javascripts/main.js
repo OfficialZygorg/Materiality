@@ -2,6 +2,7 @@
 var player = {
     particles: Number(0),
     totalMult: Number(0),
+    basicMult: Number(1.25),
     void:{
       voidClick: Number(0),
       vCResult: Number(0),
@@ -16,15 +17,15 @@ var player = {
       vCAC1Bought: Number(0),
       vCAC2Bought: Number(0),
 
-      vCAC1ClickTime: Number(200),
-      vCAC2ClickTime: Number(200),
+      vCAC1ClickTime: Number(100),
+      vCAC2ClickTime: Number(100),
 
       vCUpMult: Number(0),
       vCAC1Mult: Number(0),
       vCAC2Mult: Number(0),
 
-      vCACT1imes: Number(0),
-      vCACT2imes: Number(0),
+      vCACT1times: Number(0),
+      vCACT2times: Number(0),
     },
     implosion:{
       implodedCost: Number(1024*1e3),

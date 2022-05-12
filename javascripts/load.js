@@ -1,25 +1,25 @@
 function onLoad(){
-    document.getElementById("particles").innerHTML = formatValue(player.options.notation, player.particles, 2, 1)
+    document.getElementById("particles").innerHTML = formatValue(player.options.notation,Number(player.particles), 2, 1)
 
-    document.getElementById("vCUpMult").innerHTML = formatValue(player.options.notation,player.void.vCUpMult,0,0);
-    document.getElementById("totalMult").innerHTML = formatValue(player.options.notation,player.totalMult,2,1);
-    document.getElementById("vCResult").innerHTML = formatValue(player.options.notation,player.void.vCResult,2,1);
+    document.getElementById("vCUpMult").innerHTML = formatValue(player.options.notation,Number(player.void.vCUpMult),0,0);
+    document.getElementById("totalMult").innerHTML = formatValue(player.options.notation,Number(player.totalMult),2,1);
+    document.getElementById("vCResult").innerHTML = formatValue(player.options.notation,Number(player.void.vCResult),2,1);
 
-    document.getElementById("vCTClickBoost").innerHTML = formatValue(player.options.notation,player.void.vCTClickBoost,2,1);
-    document.getElementById("vCTClick").innerHTML = formatValue(player.options.notation,player.void.vCTClick,0,0);
-    document.getElementById("vCUpCost").innerHTML = formatValue(player.options.notation,player.void.vCUpCost,0,0);
-    document.getElementById("vCUpBought").innerHTML = formatValue(player.options.notation,player.void.vCUpBought,0,0);
-    document.getElementById("vCUpMult").innerHTML = formatValue(player.options.notation,player.void.vCUpMult,0,0);
+    document.getElementById("vCTClickBoost").innerHTML = formatValue(player.options.notation,Number(player.void.vCTClickBoost),2,1);
+    document.getElementById("vCTClick").innerHTML = formatValue(player.options.notation,Number(player.void.vCTClick),0,0);
+    document.getElementById("vCUpCost").innerHTML = formatValue(player.options.notation,Number(player.void.vCUpCost),0,0);
+    document.getElementById("vCUpBought").innerHTML = formatValue(player.options.notation,Number(player.void.vCUpBought),0,0);
+    document.getElementById("vCUpMult").innerHTML = formatValue(player.options.notation,Number(player.void.vCUpMult),0,0);
     
-    document.getElementById("vCAC1Bought").innerHTML = formatValue(player.options.notation,player.void.vCAC1Bought,0,0);
-    document.getElementById("vCAC1Cost").innerHTML = formatValue(player.options.notation,player.void.vCAC1Cost,0,0);
-    document.getElementById("vCAC1Mult").innerHTML = formatValue(player.options.notation,player.void.vCAC1Mult,0,0);
+    document.getElementById("vCAC1Bought").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC1Bought),0,0);
+    document.getElementById("vCAC1Cost").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC1Cost),0,0);
+    document.getElementById("vCAC1Mult").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC1Mult),0,0);
 
-    document.getElementById("vCAC2Bought").innerHTML = formatValue(player.options.notation,player.void.vCAC2Bought,0,0);
-    document.getElementById("vCAC2Cost").innerHTML = formatValue(player.options.notation,player.void.vCAC2Cost,0,0);
-    document.getElementById("vCAC2Mult").innerHTML = formatValue(player.options.notation,player.void.vCAC2Mult,0,0);
+    document.getElementById("vCAC2Bought").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC2Bought),0,0);
+    document.getElementById("vCAC2Cost").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC2Cost),0,0);
+    document.getElementById("vCAC2Mult").innerHTML = formatValue(player.options.notation,Number(player.void.vCAC2Mult),0,0);
 
-    document.getElementsByClassName("implodedParticles").innerHTML = formatValue(player.options.notation,player.implosion.implodedParticles,2,1);
+    document.getElementsByClassName("implodedParticles").innerHTML = formatValue(player.options.notation,Number(player.implosion.implodedParticles),2,1);
 }
 
 //Function deleteSave remove materialitySave from localStorage, then restart the page
