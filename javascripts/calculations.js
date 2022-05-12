@@ -25,7 +25,7 @@ function vCTClickBoost(){
 
 function voidClickerPlusClick(){
     player.void.vCTClick += 1;
-    document.getElementById("vCTClick").innerHTML = formatValue(player.options.notation,player.void.vCTClick,0,0);
+    document.getElementById("vCTClick").innerHTML = formatValue(player.options.notation,player.void.vCTClick,2,0);
     vCResult();
     }
 
@@ -104,12 +104,43 @@ function voidClickerAutoClicker1Sum(){
     }vCResult();
 }setInterval(voidClickerAutoClicker1Sum, (value_limit(500-(player.void.vCAC2Bought*10),1)));
 
+function hardReset(){
+    player = {
+        particles: new Number(0),
+        totalMult: new Number(0),
+        void:{
+          voidClick: new Number(0),
+          vCResult: new Number(0),
+          vCTClick: new Number(0),
+          vCTClickBoost: new Number(0),
+    
+          vCUpCost: new Number(2),
+          vCAC1Cost: new Number(1024),
+          vCAC2Cost: new Number(1024*1e2),
+    
+          vCUpBought: new Number(0),
+          vCAC1Bought: new Number(0),
+          vCAC2Bought: new Number(0),
+    
+          vCAC1ClickTime: new Number(200),
+          vCAC2ClickTime: new Number(200),
+    
+          vCUpMult: new Number(0),
+          vCAC1Mult: new Number(0),
+          vCAC2Mult: new Number(0),
+    
+          vCACT1imes: new Number(0),
+          vCACT2imes: new Number(0),
+        },
+    }
+}
+
 function implodeReality(){
-    if(player.particles >= player.implodeCost){
+    if(player.particles >= player.implosion.implodeCost){
         player.implodedParticles += player.particles/player.implodedCost
         document.getElementsByClassName("implodedParticles").innerHTML = formatValue(player.options.notation,player.implodedParticles,2,1);
     }vCResult();particles();
 }
 function implodedParticles(){
-    document.getElementById("implodedParticles").innerHTML = formatValue(player.options.notation, player.particles/player.implodedCost,2,1);
+    document.getElementById("implodedParticles").innerHTML = formatValue(player.options.notation, player.particles/player.implosion.implodedCost,2,1);
 }setInterval(implodedParticles, 1);
