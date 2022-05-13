@@ -7,4 +7,4 @@ function revealImplodeRealityTab(){if (player.implosion.implodedParticles >= 1) 
 function reveals(){
     revealVCAutoClicker1();revealVCAutoClicker2();
     implodeReality();revealImplodeRealityTab();
-}setInterval(reveals,1);
+}

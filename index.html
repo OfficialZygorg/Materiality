@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <head>
-    <title>Materiality 0.1</title>
-    <meta name="Materiality" content="A game inspired by Antimatter Dimensions, where you gain matter till the end of times">
-    <link rel="stylesheet" type="css" href="styles.css">
+  <title>Materiality 0.1</title>
+  <meta name="Materiality" content="A game inspired by Antimatter Dimensions, where you gain matter till the end of times">
+  <link rel="stylesheet" type="css" href="styles.css">
 </head>
 <body>
 
-<div><td>You have <span id="particles">0</span> particles.</td></div>
-<div class="implodedReality" hidden>You have <span class="implodedParticles">0</span> imploded particles.</div><br>
+<div><td>You have <span id="particlesAmmount"></span> particles.</td></div>
+<div>Generating <span id="result"></span> particles</div>
+<div class="implodedReality" hidden>You have <span class="implodedParticlesAmmount"></span> imploded particles.</div><br>
 
 <div class="tab">
   <button class="tablinks active" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
@@ -18,11 +19,9 @@
 </div><br>
 
 <div id="particleAccelerator" style="display: block;" class="tabName">
-  <div><span id="vCTClick">0</span> Clicks generating a Multiplier boost of x<span id="vCTClickBoost">0</span></div>
-  <div><button onclick="voidClicker()"> Generate </button> <span id="vCResult">0 </span> per click. (Total multiplier is: x<span id="totalMult">1</span>)</div>
-  <div><button class="voidClickerUpgrade" onclick="voidClickerUpgrade()">Buy Upgrade</button> Upgrade cost: <span id="vCUpCost">2</span> (<span id="vCUpBought">0</span> Bought * 2 = Multiplier of x<span id="vCUpMult">0</span>)</div>
-  <div id="autoClicker1" hidden><button class="voidClickerAutoClicker1" onclick="voidClickerAutoClicker1()"> Buy Autoclicker 1</button> Cost: <span id="vCAC1Cost">1024</span> (<span id="vCAC1Bought">0</span> Bought * 4 = Multiplier of x<span id="vCAC1Mult">0</span>)</div>
-  <div id="autoClicker2" hidden><button class="voidClickerAutoClicker2" onclick="voidClickerAutoClicker2()"> Buy Autoclicker 2</button> Cost: <span id="vCAC2Cost">102 k</span> (<span id="vCAC2Bought">0</span> Bought * 8 = Multiplier of x<span id="vCAC2Mult">0</span>)</div>
+  <div>Total Multiplier: <span id="totalMultiplier"></span></div>
+  <div id="voidGenerator1"><button class="pc1" onclick="buyParticleCollider('particleCollider1')"> Buy Particle Collider 1</button> Cost: <span id="voidGenerator1Cost"></span> (<span id="vCAC1Bought"></span> Bought. Multiplier of x<span id="vCAC1Mult"></span>)</div>
+  <div id="voidGenerator2" hidden><button class="pc2" onclick="buyParticleCollider2('particleCollider2')"> Buy Particle Collider 2</button> Cost: <span id="voidGenerator2Cost"></span> (<span id="vCAC2Bought"></span> Bought. Multiplier of x<span id="vCAC2Mult"></span>)</div>
   <div id="implodedRealityButton" hidden><button onclick="implodeReality()">Implode Reality</button> (Reset for <span id="implodedParticles"></span> imploded particles)</div>
 </div>
 
@@ -40,23 +39,21 @@
 <div id="about" style="display: none;" class="tabName">
   <td>Materiality 0.1 is a game inspired by Antimatter Dimensions, where you gain matter till the end of times.</td><br>
   <td>This is a prototype, so there are some bugs and glitches. If you find one, please report it to me.</td><br>
-  <td>You can play the game by clicking the "Generate" button.</td><br>
-  <td>Autoclicker upgrades makes the multiplier more bigger than the regular upgrade, it also reduces the click time of the autoclickers!</td>
+  <td>You can play the game by buying stuff to get more stuff! Simple!</td><br>
   <td>If you want to see the source code and know the progress of the game, you can visit the trello page below.</td><br>
   <td><a href="https://trello.com/b/7OG8V7Tz/materiality">Trello: https://trello.com/b/7OG8V7Tz/materiality</a></td>
 </div>
-
+</body>
 <script src="javascripts/jquery-3.6.0.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/decimal.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/math.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/OmegaNum.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/decimal.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/format.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/polyfill.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/notify.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/sha512.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/underscore.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/main.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/calculations.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/load.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/reveals.js" charset="utf-8" type="text/javascript"></script>
-</body>
 </html>
