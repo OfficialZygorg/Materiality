@@ -2,12 +2,12 @@
 <head>
   <title>Materiality 0.1</title>
   <meta name="Materiality" content="A game inspired by Antimatter Dimensions, where you gain matter till the end of times">
-  <link rel="stylesheet" type="css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<div><td>You have <span id="particlesAmmount"></span> particles.</td></div>
-<div>Generating <span id="result"></span> particles</div>
+<div id="particlesAmmount"></div>
+<div id="particlesPerSecond"></div>
 <div class="implodedReality" hidden>You have <span class="implodedParticlesAmmount"></span> imploded particles.</div><br>
 
 <div class="tab">
@@ -19,9 +19,20 @@
 </div><br>
 
 <div id="particleAccelerator" style="display: block;" class="tabName">
-  <div>Total Multiplier: <span id="totalMultiplier"></span></div>
-  <div id="voidGenerator1"><button class="pc1" onclick="buyParticleCollider('particleCollider1')"> Buy Particle Collider 1</button> Cost: <span id="voidGenerator1Cost"></span> (<span id="vCAC1Bought"></span> Bought. Multiplier of x<span id="vCAC1Mult"></span>)</div>
-  <div id="voidGenerator2" hidden><button class="pc2" onclick="buyParticleCollider2('particleCollider2')"> Buy Particle Collider 2</button> Cost: <span id="voidGenerator2Cost"></span> (<span id="vCAC2Bought"></span> Bought. Multiplier of x<span id="vCAC2Mult"></span>)</div>
+  <div class="generators-container">
+    <div class="generator" id="particleCollider0" onclick="buyGenerators(0)"></div>
+    <div class="generator" id="particleCollider1" onclick="buyGenerators(1)" style="display: none;"></div>
+    <div class="generator" id="particleCollider2" onclick="buyGenerators(2)" style="display: none;"></div>
+    <div class="generator" id="particleCollider3" onclick="buyGenerators(3)" style="display: none;"></div>
+    <div class="generator" id="particleCollider4" onclick="buyGenerators(4)" style="display: none;"></div>
+    <div class="generator" id="particleCollider5" onclick="buyGenerators(5)" style="display: none;"></div>
+    <div class="generator" id="particleCollider6" onclick="buyGenerators(6)" style="display: none;"></div>
+    <div class="generator" id="particleCollider7" onclick="buyGenerators(7)" style="display: none;"></div>
+    <div class="generator" id="particleCollider8" onclick="buyGenerators(8)" style="display: none;"></div>
+    <div class="generator" id="particleCollider9" onclick="buyGenerators(9)" style="display: none;"></div>
+    <div class="generator" id="particleCollider10" onclick="buyGenerators(10)" style="display: none;"></div>
+    <div class="generator" id="particleCollider11" onclick="buyGenerators(11)" style="display: none;"></div>
+  </div>
   <div id="implodedRealityButton" hidden><button onclick="implodeReality()">Implode Reality</button> (Reset for <span id="implodedParticles"></span> imploded particles)</div>
 </div>
 
@@ -45,15 +56,11 @@
 </div>
 </body>
 <script src="javascripts/jquery-3.6.0.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/OmegaNum.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/break_infinity.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/decimal.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/format.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/polyfill.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/notify.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/sha512.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/underscore.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/main.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/calculations.js" charset="utf-8" type="text/javascript"></script>
+<script src="javascripts/game.js" charset="utf-8" type="text/javascript"></script>
 <script src="javascripts/load.js" charset="utf-8" type="text/javascript"></script>
-<script src="javascripts/reveals.js" charset="utf-8" type="text/javascript"></script>
 </html>
