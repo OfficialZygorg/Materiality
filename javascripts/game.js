@@ -50,9 +50,9 @@ function buyGenerators(i){
 
 function updateGUI(){
   document.getElementById("particlesAmmount").textContent = "You have: "+formatValue(player.options.notation,player.particles,2,1)+" particles";
-  document.getElementById("particleCollider0").innerHTML = "Buy Particle Collider "+1+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[0].ammount,2,1) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[0].cost,2,1)+"<br> Bought: "+player.particleColliders[0].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[0].multiplier,2,1);
+  document.getElementById("particleCollider0").innerHTML = "Buy Particle Collider "+1+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[0].ammount,2,1) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[0].cost,2,1)+"<br> Bought: "+player.particleColliders[0].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[0].multiplier,2,2);
   for (i=1; i<player.particleColliders.length; i++) {
-    document.getElementById("particleCollider"+i).innerHTML = "Buy Particle Collider "+(i+1)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[i].ammount,2,1) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[i].cost,2,1)+"<br> Bought: "+player.particleColliders[i].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[i].multiplier,2,1);
+    document.getElementById("particleCollider"+i).innerHTML = "Buy Particle Collider "+(i+1)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[i].ammount,2,1) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[i].cost,2,1)+"<br> Bought: "+player.particleColliders[i].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[i].multiplier,2,2);
   }
 }
 
