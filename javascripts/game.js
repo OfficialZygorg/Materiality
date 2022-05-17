@@ -59,7 +59,7 @@ function updateGUI(){
 function productionLoop(diff){
   player.particles += player.particleColliders[0].ammount * player.particleColliders[0].multiplier * diff;
   for (let i=1; i<player.particleColliders.length; i++) {
-    player.particleColliders[i].ammount += player.particleColliders[i].ammount * player.particleColliders[i].multiplier * diff / 5; 
+    player.particleColliders[i-1].ammount += player.particleColliders[i].ammount * player.particleColliders[i].multiplier * diff / 5; 
   }
 }
 
