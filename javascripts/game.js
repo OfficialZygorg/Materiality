@@ -1,13 +1,14 @@
 //Game Data  
 var player = {
   particles: 10,
+  particlesLimit: 1000,
   result: 0,
   lastUpdate: Date.now(),
   particleColliders:[],
   implosion:{
-    cost: 10*10e1,
+    cost: 1000,
     implodedParticles: 0,
-    extraParticleColliders: 0,
+    timesImploded: 0,
   }, 
   options:{
     notation: "Mixed scientific",
@@ -39,6 +40,23 @@ for (i=1; i<=12; i++) {
   player.particleColliders.push(particleCollider);
 }
 
+function particlesLimitedAmmount() {
+  if (player.particles > player.particlesLimit){
+    player.particles = player.particlesLimit;
+    if (player.implosion.timesImploded > 0){
+      player.particlesLimit = player.particlesLimit * (2 * player.implosion.timesImploded);
+    }
+  }
+  document.getElementById("particlesLimit").innerHTML = "Particles Limit: " + formatValue(player.options.notation,player.particlesLimit,2,1);
+}
+
+function particlesPerSecond(){
+  for (i=0; i<player.particleColliders.length; i++){
+  player.result = player.particles / (player.particleColliders[i].ammount * player.particleColliders[i].multiplier); 
+  }
+  document.getElementById("particlesPerSecond").innerHTML = "Particles per second: " + formatValue(player.options.notation,player.result,2,1);
+}
+
 function buyGenerators(i){
   if (player.particleColliders[i].cost>player.particles) return;
   player.particles -= player.particleColliders[i].cost;
@@ -65,13 +83,22 @@ function productionLoop(diff){
 
 function mainLoop(){
   var diff = (Date.now() - player.lastUpdate) / 1000;
-  productionLoop(diff);updateGUI();
+  productionLoop(diff);updateGUI();particlesLimitedAmmount();particlesPerSecond();
   player.lastUpdate = Date.now();
 }
 setInterval(mainLoop, 50);
 
+function showDiv(divId) {
+  var x = document.getElementById(divId);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }
+}
+
+
+function revealParticleColliders(){for (i=1; i<player.particleColliders.length; i++) {if (player.particles >= player.particleColliders[i].cost) {showDiv("particleCollider"+i);}}}
 function implodeReality(){if(player.particles >= player.implosion.implodedCost){document.getElementById("implodedRealityButton").display = block;}}
 function revealImplodeRealityTab(){if (player.implosion.implodedParticles >= 1){document.getElementsByClassName("implodedReality").hidden = false;}}
 function reveals(){
-  implodeReality();revealImplodeRealityTab();
+  implodeReality();revealImplodeRealityTab();revealParticleColliders()
 }setInterval(reveals, 50);

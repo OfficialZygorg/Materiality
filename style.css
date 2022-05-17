@@ -22,14 +22,7 @@
     flex-wrap: wrap;
 }
 
-#particlesAmmount{
-    margin: 40px;
-    font-size: 1em;
-    text-align: center;
-}
-
-#particlesPerSecond{
-    margin: 40px;
+.particles{
     font-size: 1em;
     text-align: center;
 }
