@@ -74,9 +74,9 @@ function canBuy(){
 
 function particlesLimitedAmmount() {
   if (player.particles >= player.implosion.cost) {
-    player.particles = valBetween(player.particles, 0, player.implosion.cost);
+    player.particles = valBetween(player.particles, 0, player.implosion.cost+1);
   }
-  document.getElementById("particlesLimit").innerHTML = "Particles Limit: " + formatValue(player.options.notation,player.implosion.cost,2,1);
+  document.getElementById("particlesLimit").innerHTML = "Particles Limit: " + formatValue(player.options.notation,player.implosion.cost+1,2,1);
 }setInterval(particlesLimitedAmmount, 1);
 
 function buyGenerators(i){
@@ -114,13 +114,12 @@ function implodedParticlesShow(){
   document.getElementById("implodedRealityButton").innerHTML = "Implode Reality<br>Gain 1 imploded particle<br> Cost: "+formatValue(player.options.notation,player.implosion.cost,2,1)+" particles";
 }
 
-
 function implodeReality(){
   if (player.particles>=player.implosion.cost) {
     player.particles -= player.implosion.cost;
     player.implosion.implodedParticles += 1;
     player.implosion.timesImploded += 1;
-    player.implosion.cost *= (2 * player.implosion.timesImploded);
+    player.implosion.cost *= (player.implosion.timesImploded * 2);
     player.particles = 10,
     player.result = 0,
     player.lastUpdate = Date.now()
@@ -130,8 +129,8 @@ function implodeReality(){
 }
 
 function revealParticleColliders(){for(i=2;i<player.implosion.timesImploded;i++){if(player.particles>=player.particleColliders[i].cost){showDiv("particleCollider"+i);}}}
-function implodeReality(){if(player.particles>=player.implosion.cost){showDiv("implodedRealityButton");}if(player.implosion.timesImploded>=1){showDiv("implodedRealityButton");}}
+function implodeRealityShow(){if(player.particles>=player.implosion.cost){showDiv("implodedRealityButton");}if(player.implosion.timesImploded>=1){showDiv("implodedRealityButton");}}
 function revealImplodeRealityTab(){if(player.implosion.implodedParticles>=1){show("implodedRealityTab");}}
 function reveals(){
-  implodeReality();revealImplodeRealityTab();revealParticleColliders();canBuy();
+  implodeRealityShow();revealImplodeRealityTab();revealParticleColliders();canBuy();
 }setInterval(reveals, 50);
