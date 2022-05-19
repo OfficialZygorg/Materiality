@@ -8,6 +8,7 @@ var player = {
     cost: 1000,
     implodedParticles: 0,
     timesImploded: 0,
+    unlockColliders:[],
   }, 
   options:{
     notation: "Mixed scientific",
@@ -74,9 +75,9 @@ function canBuy(){
 
 function particlesLimitedAmmount() {
   if (player.particles >= player.implosion.cost) {
-    player.particles = valBetween(player.particles, 0, player.implosion.cost+1);
+    player.particles = valBetween(player.particles, 0, player.implosion.cost);
   }
-  document.getElementById("particlesLimit").innerHTML = "Particles Limit: " + formatValue(player.options.notation,player.implosion.cost+1,2,1);
+  document.getElementById("particlesLimit").innerHTML = "Particles Limit: " + formatValue(player.options.notation,player.implosion.cost,2,1);
 }setInterval(particlesLimitedAmmount, 1);
 
 function buyGenerators(i){
@@ -94,6 +95,9 @@ function updateGUI(){
   for (i=1; i<player.particleColliders.length; i++) {
     document.getElementById("particleCollider"+i).innerHTML = "Buy Particle Collider "+(i+1)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[i].ammount,2,2) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[i].cost,2,2)+"<br> Bought: "+player.particleColliders[i].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[i].multiplier,2,2);
   }
+  if (player.implosion.timesImploded>0) {
+    document.getElementById("implodedParticlesAmmount").innerHTML = "You have: "+formatValue(player.options.notation,player.implosion.implodedParticles,2,2)+" imploded particles";
+  }
 }
 
 function productionLoop(diff){
@@ -102,13 +106,6 @@ function productionLoop(diff){
     player.particleColliders[i-1].ammount += player.particleColliders[i].ammount * player.particleColliders[i].multiplier * diff / 5; 
   }
 }
-
-function mainLoop(){
-  var diff = (Date.now() - player.lastUpdate) / 1000;
-  productionLoop(diff);updateGUI();implodedParticlesShow();particlesPS();
-  player.lastUpdate = Date.now();
-}
-setInterval(mainLoop, 50);
 
 function implodedParticlesShow(){
   document.getElementById("implodedRealityButton").innerHTML = "Implode Reality<br>Gain 1 imploded particle<br> Cost: "+formatValue(player.options.notation,player.implosion.cost,2,1)+" particles";
@@ -127,6 +124,38 @@ function implodeReality(){
     makeColliders();
   }
 }
+
+function makeUnlockers(){
+  for (i=2; i<player.particleColliders.length; i++) {
+    let unlockCollider = {
+      cost: i*2,
+      bought: 0,
+    }
+    player.implosion.unlockColliders.push(unlockCollider);
+  }
+}makeUnlockers()
+
+function showUnlockGenerators(i){
+  for (i=2; i<player.particleColliders.length; i++) {
+    document.getElementById("unlockGenerator"+i).innerHTML = "Unlock Particle Collider "+(i+1)+"<br> Cost: "+formatValue(player.options.notation,player.implosion.unlockColliders[i-2].cost,2,0)+" imploded particles";
+    if(player.implosion.implodedParticles>=player.implosion.unlockColliders[i-2].cost) {document.getElementById("unlockGenerator"+(i)).style.borderColor = "green";}else {document.getElementById("unlockGenerator"+(i)).style.borderColor = "red";}
+  }
+}setInterval(showUnlockGenerators, 50);
+
+function unlockGenerator(i){
+  if (player.implosion.unlockColliders[i].cost>player.implosion.implodedParticles) return;
+  player.implosion.implodedParticles -= player.implosion.unlockColliders[i].cost;
+  player.implosion.unlockColliders[i].bought += 1;
+  showDiv("particleCollider"+i);
+}
+
+
+function mainLoop(){
+  var diff = (Date.now() - player.lastUpdate) / 1000;
+  productionLoop(diff);updateGUI();implodedParticlesShow();particlesPS();
+  player.lastUpdate = Date.now();
+}
+setInterval(mainLoop, 50);
 
 function revealParticleColliders(){for(i=2;i<player.implosion.timesImploded;i++){if(player.particles>=player.particleColliders[i].cost){showDiv("particleCollider"+i);}}}
 function implodeRealityShow(){if(player.particles>=player.implosion.cost){showDiv("implodedRealityButton");}if(player.implosion.timesImploded>=1){showDiv("implodedRealityButton");}}
