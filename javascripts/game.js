@@ -108,15 +108,15 @@ function productionLoop(diff){
 }
 
 function implodedParticlesShow(){
-  document.getElementById("implodedRealityButton").innerHTML = "Implode Reality<br>Gain 1 imploded particle<br> Cost: "+formatValue(player.options.notation,player.implosion.cost,2,1)+" particles";
+  document.getElementById("implodedRealityButton").innerHTML = "Implode Reality<br>Gain "+formatValue(player.options.notation,player.particles/1000,2,2)+"<br>imploded particles<br> Cost: "+formatValue(player.options.notation,player.implosion.cost,2,1)+" particles";
 }
 
 function implodeReality(){
   if (player.particles>=player.implosion.cost) {
     player.particles -= player.implosion.cost;
-    player.implosion.implodedParticles += 1;
+    player.implosion.implodedParticles += player.particles/1000;
     player.implosion.timesImploded += 1;
-    player.implosion.cost *= (player.implosion.timesImploded * 2);
+    player.implosion.cost = (player.implosion.timesImploded * 2);
     player.particles = 10,
     player.result = 0,
     player.lastUpdate = Date.now()
