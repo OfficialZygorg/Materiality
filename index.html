@@ -7,14 +7,14 @@
 <body>
 
 <div class="particles" id="particlesAmmount"></div>
-<div class="particles" id="particlesLimit"></div>
 <div class="particles" id="particlesPerSecond"></div>
-<div class="implodedReality" hidden>You have <span class="implodedParticlesAmmount"></span> imploded particles.</div><br>
+<div class="particles" id="particlesLimit"></div>
+<div class="implodedReality" id="implodedParticlesAmmount"></div><br>
 
 <div class="tab">
   <button class="tablinks active" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
-  <button hidden class="tablinks" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
-  <button hidden class="tablinks" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
+  <button hidden class="tablinks" id="implodedRealityTab" class="implodedRealityTab" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
+  <button hidden class="tablinks" id="darkMatterTab" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
   <button class="tablinks" onclick="openTab(event, 'options')">Options</button>
   <button class="tablinks" onclick="openTab(event, 'about')">About</button>
 </div><br>
@@ -22,7 +22,7 @@
 <div id="particleAccelerator" style="display: block;" class="tabName">
   <div class="generators-container">
     <div class="generator" id="particleCollider0" onclick="buyGenerators(0)"></div>
-    <div class="generator" id="particleCollider1" onclick="buyGenerators(1)" style="display: none;"></div>
+    <div class="generator" id="particleCollider1" onclick="buyGenerators(1)"></div>
     <div class="generator" id="particleCollider2" onclick="buyGenerators(2)" style="display: none;"></div>
     <div class="generator" id="particleCollider3" onclick="buyGenerators(3)" style="display: none;"></div>
     <div class="generator" id="particleCollider4" onclick="buyGenerators(4)" style="display: none;"></div>
@@ -34,13 +34,13 @@
     <div class="generator" id="particleCollider10" onclick="buyGenerators(10)" style="display: none;"></div>
     <div class="generator" id="particleCollider11" onclick="buyGenerators(11)" style="display: none;"></div>
   </div>
-  <div id="implodedRealityButton" onclick="implodeReality()" hidden></div>
+    <button class="implodeButton" id="implodedRealityButton" onclick="implodeReality()" style="display: none;"></button>
 </div>
 
-<div id="implodedReality" class="implodedReality" hidden class="tabName">
+<div id="implodedReality" class="implodedReality" hidden class="tabName" style="display: none;">
 </div>
   
-<div id="darkMatter" hidden class="tabName">
+<div id="darkMatter" hidden class="tabName" style="display: none;">
 </div>
 
 <div id="options" hidden class="tabName">

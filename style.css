@@ -2,10 +2,16 @@
     box-sizing: content-box;
 }
 
+.particles{
+    font-size: 1em;
+    text-align: center;
+}
+
 .generator{
     display: block;
     border: 1px solid;
     color: black;
+    border-color: red;
     background-color: whitesmoke;
     text-align: center;
     width: 200px;
@@ -22,7 +28,24 @@
     flex-wrap: wrap;
 }
 
-.particles{
-    font-size: 1em;
+.implodeButton{
+    display: block;
+    border: 1px solid;
+    color: black;
+    border-color: red;
+    background-color: whitesmoke;
     text-align: center;
+    width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
+#implodedRealityTab{
+    border-color: gray;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
 }
