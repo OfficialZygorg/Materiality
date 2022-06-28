@@ -11,6 +11,36 @@
     text-align: center;
 }
 
+.button{
+    display: block;
+    border: 1px solid;
+    color: black;
+    border-color: gray;
+    background-color: whitesmoke;
+    text-align: center;
+    width: 70px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.buyButton{
+    display: block;
+    border: 1px solid;
+    color: black;
+    border-color: gray;
+    background-color: whitesmoke;
+    text-align: center;
+    width: 90px;
+    padding: 2px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
 .generator{
     display: block;
     border: 1px solid;
@@ -24,6 +54,7 @@
     cursor: pointer;
     border-radius: 5px;
     user-select: none;
+    margin: 0 2px;
 }
 
 .generators-container{

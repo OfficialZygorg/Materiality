@@ -16,10 +16,12 @@
   <button hidden class="tablinks" id="implodedRealityTab" class="implodedRealityTab" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
   <button hidden class="tablinks" id="darkMatterTab" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
   <button class="tablinks" onclick="openTab(event, 'options')">Options</button>
+  <button class="tablinks" onclick="openTab(event, 'game-stats')">Stats</button>
   <button class="tablinks" onclick="openTab(event, 'about')">About</button>
 </div><br>
 
 <div id="particleAccelerator" style="display: block;" class="tabName">
+  <div class="buyButton" id="buyAllButton" onclick="buyAll()">Buy 1</div>
   <div class="generators-container">
     <div class="generator" id="particleCollider0" onclick="buyGenerators(0)"></div>
     <div class="generator" id="particleCollider1" onclick="buyGenerators(1)"></div>
@@ -33,8 +35,9 @@
     <div class="generator" id="particleCollider9" onclick="buyGenerators(9)" style="display: none;"></div>
     <div class="generator" id="particleCollider10" onclick="buyGenerators(10)" style="display: none;"></div>
     <div class="generator" id="particleCollider11" onclick="buyGenerators(11)" style="display: none;"></div>
-  </div>
-    <button class="implodeButton" id="implodedRealityButton" onclick="implodeReality()" style="display: none;"></button>
+  </div><br>
+  <button class="implodeButton" id="implodedRealityButton" onclick="implodeReality()" style="display: none;"></button>
+
 </div>
 
 <div id="implodedReality" style="display: none;" class="tabName" class="implodedReality" hidden>
@@ -61,7 +64,7 @@
 </div>
 
 <div id="about" hidden class="tabName">
-  <td>Materiality 0.1 is a game inspired by Antimatter Dimensions, where you gain matter till the end of times.</td><br>
+  <td>Materiality is a game inspired by Antimatter Dimensions, where you gain matter till the end of times.</td><br>
   <td>This is a prototype, so there are some bugs and glitches. If you find one, please report it to me.</td><br>
   <td>You can play the game by buying stuff to get more stuff! Simple!</td><br>
   <td>If you want to see the source code and know the progress of the game, you can visit the trello page below.</td><br>
