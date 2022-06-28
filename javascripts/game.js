@@ -55,8 +55,19 @@ function showDiv(divId) {
   }
 }
 
+function hideDiv(divId) {
+  var x = document.getElementById(divId);
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  }
+}
+
 function show(id){
   document.getElementById(id).removeAttribute("hidden");
+}
+
+function hide(id){
+  document.getElementById(id).setAttribute("hidden");
 }
 
 function makeColliders(){
@@ -110,20 +121,6 @@ function buyGenerators(i){
   player.particleColliders[i].multiplier *= 1.05 * player.implosion.boost;
   player.particleColliders[i].cost *= 1.5
   player.particleColliders[i].hasBeenBought = 1
-}
-
-function buyAll(){
-  for (i=0; i<player.particleColliders.length; i++) {
-    if (player.particles>=player.particleColliders[i].cost) {
-      player.particles -= player.particleColliders[i].cost;
-      player.particleColliders[i].ammount += 1 * player.particleColliders[i].multiplier
-      player.particleColliders[i].bought += 1
-      if (player.particleColliders[i].bought%10==0) {player.particleColliders[i].multiplier = player.particleColliders[i].multiplier * 2;}
-      player.particleColliders[i].multiplier *= 1.05 * player.implosion.boost;
-      player.particleColliders[i].cost *= 1.5
-      player.particleColliders[i].hasBeenBought = 1
-    }
-  }
 }
 
 function updateGUI(){
@@ -185,10 +182,11 @@ function showUnlockGenerators(i){
 }setInterval(showUnlockGenerators, 50);
 
 function unlockGenerator(i){
-  if (player.implosion.unlockColliders[i].cost>player.implosion.implodedParticles) return;
+  if (player.implosion.unlockColliders[i].cost<player.implosion.implodedParticles) return;
   player.implosion.implodedParticles -= player.implosion.unlockColliders[i].cost;
   player.implosion.unlockColliders[i].bought += 1;
   showDiv("particleCollider"+i);
+  hideDiv("unlockGenerator"+i);
 }
 
 function mainLoop(){
@@ -197,9 +195,9 @@ function mainLoop(){
   player.lastUpdate = Date.now();
 }setInterval(mainLoop, 50);
 
-function revealParticleColliders(){for(i=2;i<player.implosion.timesImploded;i++){if(player.particles>=player.particleColliders[i].cost){showDiv("particleCollider"+i);}}}
+// function revealParticleColliders(){for(i=2;i<player.implosion.timesImploded;i++){if(player.particles>=player.particleColliders[i].cost){showDiv("particleCollider"+i);}}}
 function implodeRealityShow(){if(player.particles>=player.implosion.cost){showDiv("implodedRealityButton");}if(player.implosion.timesImploded>=1){showDiv("implodedRealityButton");}}
 function revealImplodeRealityTab(){if(player.implosion.implodedParticles>=1){show("implodedRealityTab");}}
 function reveals(){
-  implodeRealityShow();revealImplodeRealityTab();revealParticleColliders();canBuy();
+  implodeRealityShow();revealImplodeRealityTab();canBuy();
 }setInterval(reveals, 50);
