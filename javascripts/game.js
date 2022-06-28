@@ -1,15 +1,16 @@
 //Game Data  
 var player = {
-  particles: fn(new Decimal(10)),
-  pPerSecond: fn(new Decimal(0)),
+  particles: fn2(new Decimal(10)),
+  pPerSecond: fn2(new Decimal(0)),
   lastUpdate: Date.now(),
   particleColliders:[],
   implosion:{
-    cost: fn(new Decimal(1000)),
-    implodedParticles: fn(new Decimal(0)),
-    timesImploded: fn(new Decimal(0)),
+    cost: fn2(new Decimal(1000)),
+    implodedParticles: fn2(new Decimal(0)),
+    timesImploded: fn0(new Decimal(0)),
     unlockColliders:[],
-    collidersBought: fn(new Decimal(0)),
+    collidersBought: fn0(new Decimal(0)),
+    boost: fn2(new Decimal(1)),
   },
   stats:{
     totalParticles: new Decimal(0),
@@ -20,9 +21,13 @@ var player = {
   },
 }
 
-function fn(num) {
+function fn2(num) {
   if (num === 0) return num;
   else return parseFloat(num.toFixed(2));
+}
+
+function fn0(num) {
+  return parseFloat(num);
 }
 
 function openTab(evt, idName) {
@@ -57,11 +62,12 @@ function show(id){
 function makeColliders(){
   for (i=1; i<=12; i++) {
     let particleCollider = {
-      cost: fn(Math.pow(10,i)),
-      bought: fn(new Decimal(0)),
-      multiplier: fn(new Decimal(1)), 
-      ammount: fn(new Decimal(0)),
-      hasBeenBought: fn(new Decimal(0)),
+      total: fn2(new Decimal (0)),
+      ammount: fn2(new Decimal(0)),
+      cost: fn2(Math.pow(10,i)),
+      bought: fn0(new Decimal(0)),
+      multiplier: fn2(new Decimal(1)), 
+      hasBeenBought: fn0(new Decimal(0)),
     }
     player.particleColliders.push(particleCollider);
   }
@@ -71,12 +77,12 @@ function particlesPS(){
   player.implosion.collidersBought = player.particleColliders[0].hasBeenBought + player.particleColliders[1].hasBeenBought + player.particleColliders[2].hasBeenBought + player.particleColliders[3].hasBeenBought + player.particleColliders[4].hasBeenBought + player.particleColliders[5].hasBeenBought + player.particleColliders[6].hasBeenBought + player.particleColliders[7].hasBeenBought + player.particleColliders[8].hasBeenBought + player.particleColliders[9].hasBeenBought + player.particleColliders[10].hasBeenBought + player.particleColliders[11].hasBeenBought;
   if (player.implosion.collidersBought<2) {
     pPerSecond = (player.particleColliders[0].ammount * player.particleColliders[0].multiplier)
-    document.getElementById("particlesPerSecond").innerHTML = "Particles per second: "+fn(pPerSecond)
+    document.getElementById("particlesPerSecond").innerHTML = "Particles per second: "+fn2(pPerSecond)
   }
   else if (player.implosion.collidersBought>1) {
     for (i=0; i<player.implosion.collidersBought; i++) {
       pPerSecond = (player.particleColliders[0].ammount * player.particleColliders[0].multiplier) + (player.particleColliders[i].ammount * player.particleColliders[i].multiplier);
-      document.getElementById("particlesPerSecond").innerHTML = "Particles per second: "+fn(pPerSecond)
+      document.getElementById("particlesPerSecond").innerHTML = "Particles per second: "+fn2(pPerSecond)
     }
   }
 }
@@ -101,7 +107,7 @@ function buyGenerators(i){
   player.particleColliders[i].ammount += 1 * player.particleColliders[i].multiplier
   player.particleColliders[i].bought += 1
   if (player.particleColliders[i].bought%10==0) {player.particleColliders[i].multiplier = player.particleColliders[i].multiplier * 2;}
-  player.particleColliders[i].multiplier *= 1.05
+  player.particleColliders[i].multiplier *= 1.05 * player.implosion.boost;
   player.particleColliders[i].cost *= 1.5
   player.particleColliders[i].hasBeenBought = 1
 }
@@ -113,7 +119,7 @@ function buyAll(){
       player.particleColliders[i].ammount += 1 * player.particleColliders[i].multiplier
       player.particleColliders[i].bought += 1
       if (player.particleColliders[i].bought%10==0) {player.particleColliders[i].multiplier = player.particleColliders[i].multiplier * 2;}
-      player.particleColliders[i].multiplier *= 1.05
+      player.particleColliders[i].multiplier *= 1.05 * player.implosion.boost;
       player.particleColliders[i].cost *= 1.5
       player.particleColliders[i].hasBeenBought = 1
     }
@@ -122,12 +128,15 @@ function buyAll(){
 
 function updateGUI(){
   document.getElementById("particlesAmmount").textContent = "You have: "+formatValue(player.options.notation,player.particles,2,2)+" particles";
-  document.getElementById("particleCollider0").innerHTML = "Buy Particle Collider "+1+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[0].ammount,2,2) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[0].cost,2,2)+"<br> Bought: "+player.particleColliders[0].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[0].multiplier,2,2);
+  document.getElementById("particleCollider0").innerHTML = "Buy Particle Collider "+1+"<br> Total: "+fn2(player.particleColliders[0].total)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[0].ammount,2,2) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[0].cost,2,2)+"<br> Bought: "+player.particleColliders[0].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[0].multiplier,2,2);
   for (i=1; i<player.particleColliders.length; i++) {
-    document.getElementById("particleCollider"+i).innerHTML = "Buy Particle Collider "+(i+1)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[i].ammount,2,2) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[i].cost,2,2)+"<br> Bought: "+player.particleColliders[i].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[i].multiplier,2,2);
+    document.getElementById("particleCollider"+i).innerHTML = "Buy Particle Collider "+(i+1)+"<br> Total: "+fn2(player.particleColliders[i].total)+"<br> Ammount: " + formatValue(player.options.notation,player.particleColliders[i].ammount,2,2) +"<br> Cost: "+formatValue(player.options.notation,player.particleColliders[i].cost,2,2)+"<br> Bought: "+player.particleColliders[i].bought+"<br> Multiplier: "+formatValue(player.options.notation,player.particleColliders[i].multiplier,2,2);
   }
   if (player.implosion.timesImploded>0) {
     document.getElementById("implodedParticlesAmmount").innerHTML = "You have: "+formatValue(player.options.notation,player.implosion.implodedParticles,2,2)+" imploded particles";
+  }
+  for (i=0; i<player.particleColliders.length; i++) {
+    player.particleColliders[i].total = player.particleColliders[i].ammount * player.particleColliders[i].multiplier;
   }
 }
 
@@ -144,6 +153,7 @@ function implodedParticlesShow(){
 
 function implodeReality(){
   if (player.particles>=player.implosion.cost) {
+    if (confirm("Are you sure you want to implode reality? It will remove all your particles, and colliders. You will gain "+formatValue(player.options.notation,player.particles/1000,2,2)+" imploded particles, a bonus multiplier of "+fn2(player.implosion.boost*1.05)+" to your particle colliders and the limit will rise to "+player.implosion.cost * (player.implosion.timesImploded+1 * 2)+". This action is irreversible.")) {
     player.implosion.implodedParticles += player.particles/1000;
     player.particles -= player.implosion.cost;
     player.implosion.timesImploded += 1;
@@ -152,6 +162,8 @@ function implodeReality(){
     player.lastUpdate = Date.now()
     player.particleColliders=[]
     makeColliders();
+    player.implosion.boost *= 1.05;
+    }
   }
 }
 
