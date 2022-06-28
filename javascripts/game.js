@@ -105,7 +105,6 @@ function canBuy(){
   }
 }
 
-//Function buy1 to buy 1 of each collider
 function buy1(){
   for (i=player.particleColliders.length-1; i>=0; i--) {
     if (player.particles>=player.particleColliders[i].cost) {
@@ -120,23 +119,7 @@ function buy1(){
   }
 }
 
-//Function buyMax to buy all of each collider till you can't buy anymore
 function buyMax(){
-  for (i=player.particleColliders.length-1; i>=0; i--) {
-    while (player.particles>=player.particleColliders[i].cost) {
-      player.particles -= player.particleColliders[i].cost;
-      player.particleColliders[i].ammount += 1 * player.particleColliders[i].multiplier
-      player.particleColliders[i].bought += 1
-      if (player.particleColliders[i].bought%10==0) {player.particleColliders[i].multiplier = player.particleColliders[i].multiplier * 2;}
-      player.particleColliders[i].multiplier *= 1.05 * player.implosion.boost;
-      player.particleColliders[i].cost *= 1.5
-      player.particleColliders[i].hasBeenBought = 1
-    }
-  }
-}
-
-//Function buyMax to buy all of each collider till you can't buy anymore from most expensive to least
-function buyMax2(){
   for (i=player.particleColliders.length-1; i>=0; i--) {
     while (player.particles>=player.particleColliders[i].cost) {
       player.particles -= player.particleColliders[i].cost;
@@ -209,10 +192,14 @@ function implodeReality(){
   }
 }
 
+function showImplosionBoost(){
+  document.getElementById("implosionBoost").innerHTML = "Implosion Boost: "+fn2(player.implosion.boost);
+}
+
 function makeUnlockers(){
   for (i=2; i<player.particleColliders.length; i++) {
     let unlockCollider = {
-      cost: i*2,
+      cost: i*25*2,
       bought: 0,
     }
     player.implosion.unlockColliders.push(unlockCollider);
@@ -237,7 +224,7 @@ function unlockGenerator(i){
 
 function mainLoop(){
   var diff = (Date.now() - player.lastUpdate) / 1000;
-  productionLoop(diff);updateGUI();implodedParticlesShow();particlesPS();
+  productionLoop(diff);updateGUI();implodedParticlesShow();particlesPS();showImplosionBoost();
   player.lastUpdate = Date.now();
 }setInterval(mainLoop, 50);
 

@@ -15,6 +15,8 @@
   <button class="tablinks active" onclick="openTab(event, 'particleAccelerator')">Particle Accelerator</button>
   <button hidden class="tablinks" id="implodedRealityTab" class="implodedRealityTab" onclick="openTab(event, 'implodedReality')">Imploded Reality</button>
   <button hidden class="tablinks" id="darkMatterTab" onclick="openTab(event, 'darkMatter')">Dark Matter</button>
+  <button class="tablinks" onclick="openTab(event, 'goals')">Goals</button>
+  <button class="tablinks" onclick="openTab(event, 'achievements')">Achievements</button>
   <button class="tablinks" onclick="openTab(event, 'options')">Options</button>
   <button class="tablinks" onclick="openTab(event, 'about')">About</button>
 </div><br>
@@ -42,6 +44,7 @@
 </div>
 
 <div id="implodedReality" style="display: none;" class="tabName" class="implodedReality" hidden>
+  <div class="button" id="implosionBoost"></div><br>
   <div class="generators-shop-container">
     <button class="unlockGenerators" id="unlockGenerator2" onclick="unlockGenerator(2)" style="display: block;"></button>
     <button class="unlockGenerators" id="unlockGenerator3" onclick="unlockGenerator(3)" style="display: block;"></button>
@@ -53,10 +56,19 @@
     <button class="unlockGenerators" id="unlockGenerator9" onclick="unlockGenerator(9)" style="display: block;"></button>
     <button class="unlockGenerators" id="unlockGenerator10" onclick="unlockGenerator(10)" style="display: block;"></button>
     <button class="unlockGenerators" id="unlockGenerator11" onclick="unlockGenerator(11)" style="display: block;"></button>
+  </div><br>
+  <div class="implosion-upgrades-container">
+    <div class="generator"></div>
   </div>
 </div>
   
 <div id="darkMatter" hidden class="tabName" style="display: none;">
+</div>
+
+<div id="goals" style="display: block;" class="tabName">
+</div>
+
+<div id="achievements" style="display: block;" class="tabName">
 </div>
 
 <div id="options" hidden class="tabName">

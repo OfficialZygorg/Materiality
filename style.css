@@ -64,6 +64,13 @@
     justify-content: center;
 }
 
+.implosion-upgrades-container{
+    display: flex;
+    width: 800px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .implodeButton{
     display: block;
     border: 1px solid;
