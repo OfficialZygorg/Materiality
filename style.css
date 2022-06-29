@@ -26,6 +26,21 @@
     user-select: none;
 }
 
+.about{
+    display: block;
+    border: 1px solid;
+    color: black;
+    border-color: gray;
+    background-color: whitesmoke;
+    text-align: center;
+    width: 700px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
 .buyButton{
     display: block;
     border: 1px solid;
