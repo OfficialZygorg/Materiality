@@ -5,6 +5,12 @@
 4th 0 Bug fix version
 
 ********************************
+0.0.2.0 6/29/2022
+*Modifications:
+-Added more .js files to the project, to make it easier to add new features, and changed some code locations.
+*Aditions:
+-Goals
+********************************
 0.0.1.1 6/29/2022
 -Initial release of changelogs
 *Fixes:
